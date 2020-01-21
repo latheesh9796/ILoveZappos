@@ -49,8 +49,8 @@ class HourlyPriceCheckService : JobService() {
                     val sharedPreference =
                         getSharedPreferences("com.example.ilovezappos", Context.MODE_PRIVATE)
                     val alertValue = sharedPreference.getFloat("alertPrice", -1f)
-                    // If the price of bitcoin is lesser than the value set for alert. Trigger a notification and update LastUpdated value.
-                    if (data.low.toFloat() < alertValue) {
+                    // If the current price of bitcoin is lesser than the value set for alert. Trigger a notification and update LastUpdated value.
+                    if (data.last.toFloat() < alertValue) {
                         createNotification(alertValue)
                     }
                     var editor = sharedPreference.edit()
